@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<title>Login</title>
+
+{% if error %}
+
+<h6 class="text-center" style="color: red;margin-top: 5px;">*{{error}}</h6>
+
+{% endif %}
+
+<form action="{% url 'accounts:Login' %}" method="POST" class="container form-container">
+    
+    {% csrf_token %}
+
+    <div class="form-group">
+        <label for="username">Username</label>
+        <input type="text" class="form-control" id="username" name="username" required>
+    </div>
+    <div class="form-group">
+        <label for="password">Password</label>
+        <input type="password" class="form-control" id="password" name="password" required>
+    </div>
+    <button type="submit" class="btn btn-primary">Login!</button>
+
+
+</form>
+
+
+{% endblock %}

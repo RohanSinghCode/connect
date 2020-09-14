@@ -131,5 +131,6 @@ MEDIA_ROOT = [
 
 
 STATICFILES_DIRS = [
-    os.path.join(BASE_DIR,'connect-ui/build/static')
+    os.path.join(BASE_DIR,'connect-ui/build/static'),
+    os.path.join(BASE_DIR,'Static/')
 ]
