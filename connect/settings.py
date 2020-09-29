@@ -19,6 +19,8 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.0/howto/deployment/checklist/
 
+
+
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = '3%&q_@jh53^jyc6&obwq)@p#tlxvb-_aj^7hs7*rxii!mmre92'
 
@@ -26,6 +28,7 @@ SECRET_KEY = '3%&q_@jh53^jyc6&obwq)@p#tlxvb-_aj^7hs7*rxii!mmre92'
 DEBUG = True
 
 ALLOWED_HOSTS = []
+
 
 
 # Application definition
@@ -37,8 +40,16 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'accounts'
+    'corsheaders',
+    'rest_framework',
+    'knox',
+    'accounts',
+   
+ 
 ]
+
+
+
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -48,6 +59,8 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
+    'django.middleware.common.CommonMiddleware',
 ]
 
 ROOT_URLCONF = 'connect.urls'
@@ -56,7 +69,7 @@ TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [
-            os.path.join(BASE_DIR,'connect-ui/build'),
+
             os.path.join(BASE_DIR,'templates')
         ],
         'APP_DIRS': True,
@@ -125,12 +138,14 @@ STATIC_URL = '/static/'
 
 MEDIA_URL = '/media/'
 
-MEDIA_ROOT = [
-    os.path.join(BASE_DIR,'media')
-]
+MEDIA_ROOT = os.path.join(BASE_DIR,'media')
+
 
 
 STATICFILES_DIRS = [
-    os.path.join(BASE_DIR,'connect-ui/build/static'),
     os.path.join(BASE_DIR,'Static/')
+]
+
+CORS_ORIGIN_WHITELIST = [
+    "http://localhost:3000"
 ]
