@@ -1,0 +1,16 @@
+.group input {
+    width: 100%;
+    padding: 12px 20px;
+    border-style: none;
+    border-bottom-style: solid;
+    margin: 4px 0;
+    
+}
+
+*:focus {
+    outline: none;
+}
+
+
+
+

@@ -1,0 +1,9 @@
+.custom-button button {
+    font-size: 30px;
+    border-radius: 5px;
+    border: 1px solid ;
+}
+
+.custom-button button:hover {
+    cursor: pointer;
+}

@@ -5,6 +5,7 @@ from .models import Account
 
 
 class UserSerializer(serializers.ModelSerializer):
+    password = serializers.CharField(write_only=True)
     class Meta:
         model = User
         fields = (
@@ -13,10 +14,19 @@ class UserSerializer(serializers.ModelSerializer):
             'username',
             'password'
         )
-
+    def create(self,validated_data):
+        user = super(UserSerializer, self).create(validated_data)
+        user.set_password(validated_data['password'])
+        user.save()
+        return user
 
 class AccountSerializer(serializers.ModelSerializer):
     class Meta:
         model = Account
-        fields = '__all__'
+        fields = ('user','profile_pic')
+    
+        
+        
+        
+    
 

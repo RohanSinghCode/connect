@@ -4,7 +4,7 @@ from django.contrib.auth.models import User
 
 class Account(models.Model):
     user = models.ForeignKey(User,on_delete=models.CASCADE)
-    proilfe_pic = models.ImageField(upload_to='.profile_pic')
+    profile_pic = models.ImageField(upload_to='.profile_pic',null=True)
     
 
 

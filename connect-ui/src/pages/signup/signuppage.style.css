@@ -1,0 +1,19 @@
+.form-group {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+    margin-top: 100px;
+}
+
+.form-group button {
+    margin-top: 10px;
+    
+}
+
+* {
+    background-color: rgb(34, 2, 34);
+    color: white;
+}
