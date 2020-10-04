@@ -1,4 +1,5 @@
 import React from 'react';
+import axios from 'axios';
 
 import './signuppage.style.css'
 
@@ -31,6 +32,8 @@ class SignUpPage extends React.Component {
     }
 
     handlSubmit = e => {
+
+        const {first_name,last_name,username,password} = this.state
         e.preventDefault()
         if(this.state.password1 !== this.state.password){
             alert("OPPS! PASSWORD DOES NOT MATCH ! TRY AGAIN");
@@ -38,12 +41,11 @@ class SignUpPage extends React.Component {
         }
 
         var url = "http://127.0.0.1:8000/accounts/";
-        fetch(url,{
-            method:'POST',
-            headers:{
-               'Content-type':'application/json', 
-            },
-            body:JSON.stringify(this.state)
+        axios.post(url,{
+            first_name:first_name,
+            last_name:last_name,
+            username:username,
+            password:password
         }).then(response => {
             response.json()
             this.setState({

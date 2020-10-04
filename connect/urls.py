@@ -6,5 +6,6 @@ from django.views.generic import TemplateView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('rest-auth/', include('rest_auth.urls')),
     path('accounts/',include('accounts.urls')),
 ]

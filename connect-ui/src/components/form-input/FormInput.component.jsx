@@ -6,7 +6,7 @@ import './FormInput.style.css';
 const FormInput = ({handleChange,label, ...otherProps}) => {
     return(
         <div className="group">
-            <label>{label}</label>
+            <label>{label.toUpperCase()}</label>
             <input
                 onChange={handleChange}
                 {...otherProps}
