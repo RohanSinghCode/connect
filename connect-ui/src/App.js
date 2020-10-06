@@ -1,7 +1,7 @@
 import React from "react";
-import {Switch, Route ,Redirect} from 'react-router-dom';
+import {Switch, Route } from 'react-router-dom';
 import {connect} from 'react-redux';
-
+import * as actions from './store/actions/auth';
 
 import "./App.css";
 
@@ -9,13 +9,20 @@ import SignUpPage from './pages/signup/signuppage.component';
 import LoginPage from './pages/login/login';
 
 class App extends React.Component {
+
+  
+  componentDidMount() {
+    this.props.onTryAutoSignup();
+    
+  }
  
   render() {
+
     return (
       <div>
       <Switch>
-        <Route  component={SignUpPage} path='/' exact/>
-        <Route component={LoginPage} path='/login' exact/>
+        <Route  component={()=> <SignUpPage {...this.props}/>} path='/signup'  exact/>
+        <Route component={()=> <LoginPage {...this.props}/>} path='/' isAuthenticated exact/>
       </Switch>
        
       </div>
@@ -23,11 +30,19 @@ class App extends React.Component {
   }
 }
 
-// mapStateToProps = state => {
-//   return{
-//     isAuthenticated: state.token !== null 
-//   }
-// }
+const mapStateToProps = state => {
+  return{
+    isAuthenticated: state.token !== null 
+  }
+}
+
+const mapDispatchToProps = dispatch => {
+  return {
+    onTryAutoSignup : () => dispatch(actions.authCheckState())
+  }
+}
 
 
-export default App;
+
+
+export default connect(mapStateToProps,mapDispatchToProps)(App);

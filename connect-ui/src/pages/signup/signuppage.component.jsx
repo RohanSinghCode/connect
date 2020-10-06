@@ -1,8 +1,9 @@
 import React from 'react';
-import axios from 'axios';
+
+import { connect } from 'react-redux';
 
 import './signuppage.style.css'
-
+import * as actions from '../../store/actions/auth';
 
 import FormInput from '../../components/form-input/FormInput.component';
 import CustomButton from '../../components/custom-button/CustomButton.components';
@@ -40,21 +41,12 @@ class SignUpPage extends React.Component {
             return;
         }
 
-        var url = "http://127.0.0.1:8000/accounts/";
-        axios.post(url,{
-            first_name:first_name,
-            last_name:last_name,
-            username:username,
-            password:password
-        }).then(response => {
-            response.json()
-            this.setState({
-                first_name:"",
-                last_name:"",
-                username:"",
-                password:""
-            })
-        }).catch(err=>console.log(err))
+        this.props.onAuth(
+            first_name,
+            last_name,
+            username,
+            password
+        )
     }
 
 
@@ -76,4 +68,19 @@ class SignUpPage extends React.Component {
     }
 }
 
-export default SignUpPage;
+const mapStateToProps = (state) => {
+    return {
+        loading: state.loading,
+        error: state.error
+    }
+}
+
+
+const mapDispatchToProps = dispatch => {
+    return {
+        onAuth: (first_name,last_name,username,password) => dispatch(actions.authSignUp(first_name,last_name,username,password)) 
+    }
+}
+
+
+export default connect(mapStateToProps,mapDispatchToProps)(SignUpPage);

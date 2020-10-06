@@ -1,34 +1,60 @@
 import React from 'react';
-
+import { connect } from 'react-redux';
 
 
 import './login.style.css';
-
+import * as actions from '../../store/actions/auth';
 
 import FormInput from '../../components/form-input/FormInput.component';
 import CustomButton from '../../components/custom-button/CustomButton.components';
 
 
 
+
 class LoginPage extends React.Component {
 
-    constructor(){
-        super();
+    constructor(props){
+        super(props);
 
         this.state = {
             username:'',
-            password:''
+            password:'',
         }
     }
 
+    handleChange = e => {
+        var value = e.target.value
+        this.setState({
+            ...this.state,
+            [e.target.name]:value
+        })
+    }
+
+
+    handleSubmit = e => {
+        const {username,password} = this.state
+
+        e.preventDefault();
+
+        this.props.onAuth(username,password);
+        
+        
+    }
+
+    
+
     render(){
         return(
-            <div class='login-group'>
-                <form>
-                <FormInput type='text' name='username' label='username' />
-                <FormInput type='password' name='password' label='password'/>
+            <div className='login-group' > 
+              {this.props.isAuthenticated?<h1>user logged in</h1>:
+                <form onSubmit={this.handleSubmit}>
+                <FormInput type='text' name='username' label='username' onChange={this.handleChange} />
+                <FormInput type='password' name='password' label='password'onChange={this.handleChange} />
                 <CustomButton type='submit' name='LOGIN!' value='submit'/>
                 </form>
+              
+              }
+                
                 
             </div>
         )
@@ -37,4 +63,19 @@ class LoginPage extends React.Component {
 }
 
 
-export default LoginPage;
+const mapStateToProps = (state) => {
+    return {
+        loading: state.loading,
+        error: state.error
+    }
+}
+
+
+const mapDispatchToProps = dispatch => {
+    return {
+        onAuth: (username, password) => dispatch(actions.authLogin(username, password)) 
+    }
+}
+
+
+export default connect(mapStateToProps,mapDispatchToProps)(LoginPage);
