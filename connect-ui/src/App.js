@@ -1,12 +1,16 @@
 import React from "react";
-import {Switch, Route } from 'react-router-dom';
+import {Switch, Route,Redirect } from 'react-router-dom';
 import {connect} from 'react-redux';
 import * as actions from './store/actions/auth';
 
 import "./App.css";
 
-import SignUpPage from './pages/signup/signuppage.component';
-import LoginPage from './pages/login/login';
+import SignUpPage from './pages/signup/signup.page';
+import LoginPage from './pages/login/login.page';
+import LandingPage from  './pages/landingpage/landing.page';
+import Navbar from './components/navbar/navbar.component';
+
+
 
 class App extends React.Component {
 
@@ -19,10 +23,16 @@ class App extends React.Component {
   render() {
 
     return (
-      <div>
+      <div> 
+      <Navbar />
       <Switch>
         <Route  component={()=> <SignUpPage {...this.props}/>} path='/signup'  exact/>
-        <Route component={()=> <LoginPage {...this.props}/>} path='/' isAuthenticated exact/>
+        <Route component={()=> <LandingPage {...this.props} />} path='/' exact/>
+        <Route render={()=>
+        this.props.isAuthenticated?(
+        <Redirect to='/' />)
+        :(<LoginPage {...this.props} />)} exact path='/login' />)
+      
       </Switch>
        
       </div>
@@ -32,7 +42,7 @@ class App extends React.Component {
 
 const mapStateToProps = state => {
   return{
-    isAuthenticated: state.token !== null 
+    isAuthenticated: state.token !== null
   }
 }
 

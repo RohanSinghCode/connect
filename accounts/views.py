@@ -10,17 +10,17 @@ from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import generics
 from rest_framework import mixins
+from rest_framework.parsers import MultiPartParser, FormParser
+from rest_framework.permissions import IsAuthenticated
+from django.contrib.auth import get_user_model
 
 
 
 from .serializer import UserSerializer,AccountSerializer
 
 
-# Create your views here.
 
 
-
-    
 
 
 
@@ -39,22 +39,18 @@ class UserRegister(APIView):
 
 
 
-class AccountRegister(APIView):
 
-    def get(self,request,*args,**kwargs):
-        user = User.objects.get(username=request.user.username)
-        acc = Account.objects.get(user=user)
+
+
+class AccountRegister(generics.CreateAPIView):
+    permission_classes = [IsAuthenticated]
+    serializer_class = AccountSerializer
+    
+   
+class AccountPicture(APIView):
+    permission_classes = [IsAuthenticated]
+
+    def get(self,*args,**kwargs):
+        acc = Account.objects.get(user=self.request.user)
         serializer = AccountSerializer(acc,many=False)
         return Response(serializer.data)
-    
-    def post(self,request,*args,**kwargs):
-        serializer = AccountSerializer(data=request.data)
-        serializer.set_the_user(request.user)
-        if serializer.is_valid():
-            serializer.save(user=request.user)
-            return Response(serializer.data)
-        
-        return Response(serializer.errors)
-
-
-

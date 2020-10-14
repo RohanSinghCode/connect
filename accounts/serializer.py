@@ -21,10 +21,13 @@ class UserSerializer(serializers.ModelSerializer):
         return user
 
 class AccountSerializer(serializers.ModelSerializer):
+    user = UserSerializer(read_only=True)
     class Meta:
         model = Account
         fields = ('user','profile_pic')
     
+
+ 
         
         
         

@@ -2,7 +2,7 @@ import React from 'react';
 
 import { connect } from 'react-redux';
 
-import './signuppage.style.css'
+import './signup.style.css'
 import * as actions from '../../store/actions/auth';
 
 import FormInput from '../../components/form-input/FormInput.component';
@@ -47,13 +47,14 @@ class SignUpPage extends React.Component {
             username,
             password
         )
+ 
     }
 
 
     render(){
         const {first_name,last_name,username,password} = this.state;
         return(
-            <div class='form-group'>
+            <div className='form-group'>
                 <form onSubmit={this.handlSubmit} >
                     <FormInput type="text"  name='first_name' onChange={this.handleChange} label="First Name" value={first_name} required/>
                     <FormInput type="text" name='last_name' onChange={this.handleChange} label="Last Name" value={last_name} required />
@@ -62,7 +63,6 @@ class SignUpPage extends React.Component {
                     <FormInput type="password" name='password1' onChange={this.handleChange} label="Confirm Password" required />
                     <CustomButton type="submit" name='SIGN UP' value='submit' />
                 </form>
-                <h1>{this.state.lname}</h1>
             </div>
         )
     }

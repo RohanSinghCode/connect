@@ -19,6 +19,7 @@ class LoginPage extends React.Component {
         this.state = {
             username:'',
             password:'',
+            error:'',
         }
     }
 
@@ -44,18 +45,17 @@ class LoginPage extends React.Component {
     
 
     render(){
+        if(this.props.error){
+            this.setState({error:'username or password is incorrect*'})
+        }
         return(
             <div className='login-group' > 
-              {this.props.isAuthenticated?<h1>user logged in</h1>:
+                <p style={{color:"red"}}>{this.state.error}</p>
                 <form onSubmit={this.handleSubmit}>
-                <FormInput type='text' name='username' label='username' onChange={this.handleChange} />
-                <FormInput type='password' name='password' label='password'onChange={this.handleChange} />
+                <FormInput type='text' name='username' label='username' onChange={this.handleChange} required/>
+                <FormInput type='password' name='password' label='password'onChange={this.handleChange}  required/>
                 <CustomButton type='submit' name='LOGIN!' value='submit'/>
-                </form>
-              
-              }
-                
-                
+                </form>     
             </div>
         )
     }
@@ -66,7 +66,7 @@ class LoginPage extends React.Component {
 const mapStateToProps = (state) => {
     return {
         loading: state.loading,
-        error: state.error
+        error: state.error,
     }
 }
 

@@ -2,8 +2,13 @@
     width: 100%;
     padding: 12px 20px;
     border-style: none;
-    border-bottom-style: solid;
+    border-bottom-style: solid black;
     margin: 4px 0;
+    background-color: rgb(1, 46, 61);
+    border-radius: 10px;
+    color: white;
+    
+    
     
 }
 

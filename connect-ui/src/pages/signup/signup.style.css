@@ -1,25 +1,20 @@
-.login-group {
+.form-group {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     height: 500px;
     margin: auto;
-    margin-top: 50px;
     width: 500px;
+    margin-top: 50px;
     background-color: #63a4ff;
     background-image: linear-gradient(315deg, #63a4ff 0%, #83eaf1 74%);
     border-radius: 30px;
     box-shadow: 5px 5px black;
-
-
-   
 }
 
-.login-group button {
+.form-group button {
     margin-top: 10px;
     
 }
-
-
 
