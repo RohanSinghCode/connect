@@ -12,19 +12,22 @@ class UserSerializer(serializers.ModelSerializer):
             'first_name',
             'last_name',
             'username',
-            'password'
+            'password',
+            'id'
         )
     def create(self,validated_data):
         user = super(UserSerializer, self).create(validated_data)
         user.set_password(validated_data['password'])
         user.save()
+        acc = Account.objects.create(user=user)
+        acc.save()
         return user
 
 class AccountSerializer(serializers.ModelSerializer):
     user = UserSerializer(read_only=True)
     class Meta:
         model = Account
-        fields = ('user','profile_pic')
+        fields = ('user','profile_pic','aboutme')
     
 
  

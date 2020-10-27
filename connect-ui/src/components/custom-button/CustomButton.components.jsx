@@ -4,17 +4,15 @@ import './CustomButton.style.css';
 
 
 
-const CustomButton = (props) => {
+const CustomButton = ({className,...props}) => {
     
         return(
-            <div className="custom-button">
                 <button
-                type={props.type}
-                value = {props.value}
+                {...props}
+                className={`custom-button ${className}`}
                 >
                 {props.name.toUpperCase()}
                 </button>
-            </div>
         )
 }
 

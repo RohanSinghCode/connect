@@ -40,14 +40,16 @@ class UserRegister(APIView):
 
 
 
-
-
-class AccountRegister(generics.CreateAPIView):
+class AccountUpdate(generics.UpdateAPIView):
     permission_classes = [IsAuthenticated]
     serializer_class = AccountSerializer
+     
+    def get_object(self):
+        return Account.objects.get(user = self.request.user)
+
     
    
-class AccountPicture(APIView):
+class UserDetails(APIView):
     permission_classes = [IsAuthenticated]
 
     def get(self,*args,**kwargs):

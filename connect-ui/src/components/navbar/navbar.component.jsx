@@ -13,12 +13,15 @@ const Navbar = (props) => {
     return(
         <div className='container'>
            <nav className='navbar'>
-                <div className="options">
-                    <Link to='/' className='option'>HOME</Link>
-                </div>
+                
                 <div className="options">
                     {
-                        props.isAuthenticated?<Link onClick={props.logout} className='option'>LOGOUT</Link>:
+                        props.isAuthenticated?(
+                            <div className="options">
+                             <Link to='/' className='option'>HOME</Link>
+                             <Link onClick={props.logout} className='option'>LOGOUT</Link>
+                             </div>
+                            ):
                         <div className="options"> 
                             <Link to='/login' className='option'>LOGIN</Link>
                             <Link to='/signup' className='option'>SIGNUP</Link>

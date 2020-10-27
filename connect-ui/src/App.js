@@ -27,12 +27,12 @@ class App extends React.Component {
       <Navbar />
       <Switch>
         <Route  component={()=> <SignUpPage {...this.props}/>} path='/signup'  exact/>
-        <Route component={()=> <LandingPage {...this.props} />} path='/' exact/>
         <Route render={()=>
         this.props.isAuthenticated?(
         <Redirect to='/' />)
-        :(<LoginPage {...this.props} />)} exact path='/login' />)
-      
+        :(<LoginPage {...this.props} />)} path='/login'   />)
+        <Route component={()=> <LandingPage {...this.props} />} path='/' />
+        
       </Switch>
        
       </div>

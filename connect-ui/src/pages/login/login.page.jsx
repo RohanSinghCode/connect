@@ -52,7 +52,7 @@ class LoginPage extends React.Component {
             <div className='login-group' > 
                 <p style={{color:"red"}}>{this.state.error}</p>
                 <form onSubmit={this.handleSubmit}>
-                <FormInput type='text' name='username' label='username' onChange={this.handleChange} required/>
+                <FormInput type='text' name='username' label='username' onChange={this.handleChange}  required/>
                 <FormInput type='password' name='password' label='password'onChange={this.handleChange}  required/>
                 <CustomButton type='submit' name='LOGIN!' value='submit'/>
                 </form>     

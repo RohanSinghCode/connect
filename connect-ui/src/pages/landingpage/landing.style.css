@@ -1,0 +1,28 @@
+.landing-page-group {
+    height: 100%;
+    width: 100%;
+}
+
+
+.landing-page-group .left {
+    height: 100%;
+    width: 30%;
+    border-right: 2px solid black;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 10px 10px;
+    flex-direction: column;
+    font-size: 10px;
+}
+
+.landing-page-group .left .button {
+    font-size: 20px;
+    margin-top: 5px;
+}
+
+
+
+
+
+
