@@ -10,6 +10,7 @@ import './landing.style.css';
 import ImageContainer from '../../components/image-container/image-container.componenet';
 import CustomButton from '../../components/custom-button/CustomButton.components';
 import UpdateContainer from '../../components/update-container/update.componenet';
+import Posts from '../../components/posts/posts.component';
 
 
 class LandingPage extends React.Component {
@@ -23,7 +24,8 @@ class LandingPage extends React.Component {
             username:"",
             path:"",
             id:"",
-            check:false
+            check:false,
+            
         }
     }
 
@@ -42,15 +44,19 @@ class LandingPage extends React.Component {
                         id:resp.data.user.id,
                         path:resp.data.profile_pic
                     })
-                    console.log(resp.data)
+                    
                 } 
                 
             ).catch(err => console.log(err))
         }
-    }
-
+        }
     
-    onClick = e => {
+    
+    
+
+       
+
+    toggleButton = e => {
         this.setState(state=>({
             check: !state.check
         }));
@@ -64,11 +70,14 @@ class LandingPage extends React.Component {
             <div className='landing-page-group'>
                 <div className='left'>
                         <ImageContainer  path={this.state.path} />
-                        <CustomButton name='change' className='button' onClick={this.onClick} />  
+                        <CustomButton name='change' className='button' onClick={this.toggleButton} />  
                         {
                             this.state.check?<UpdateContainer type='file' id={this.state.id} />:null
                            
                         } 
+                </div>
+                <div className='right'>
+                        <Posts />
                 </div>
               
                 

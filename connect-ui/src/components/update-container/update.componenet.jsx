@@ -25,10 +25,9 @@ class UpdateContainer extends React.Component {
     }
 
     handleSubmit = e => {
-        e.preventDefault();
         
+        e.preventDefault();
         const formData = new FormData();
-
         formData.append(
             "profile_pic",
             this.state.image,
@@ -40,12 +39,10 @@ class UpdateContainer extends React.Component {
         }
 
         axios.patch(`http://127.0.0.1:8000/accounts/${this.props.id}/update`,formData)
+        .then(window.location.reload())
         .catch(error => console.log(error))
      
     }
-
-    
-
     render(){
         return(
             <div className='container'>

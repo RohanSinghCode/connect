@@ -36,8 +36,12 @@ class LoginPage extends React.Component {
         const {username,password} = this.state
 
         e.preventDefault();
-
+        
+       
         this.props.onAuth(username,password);
+       
+
+        
         
         
     }
@@ -45,12 +49,15 @@ class LoginPage extends React.Component {
     
 
     render(){
-        if(this.props.error){
-            this.setState({error:'username or password is incorrect*'})
-        }
+        let errorMessage = null;
+    if (this.props.error) {
+        errorMessage = (
+            <p>username or password is incorrect</p>
+        );
+    }
         return(
             <div className='login-group' > 
-                <p style={{color:"red"}}>{this.state.error}</p>
+                {errorMessage}
                 <form onSubmit={this.handleSubmit}>
                 <FormInput type='text' name='username' label='username' onChange={this.handleChange}  required/>
                 <FormInput type='password' name='password' label='password'onChange={this.handleChange}  required/>

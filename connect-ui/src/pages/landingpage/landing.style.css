@@ -1,16 +1,16 @@
 .landing-page-group {
     height: 100%;
     width: 100%;
+    display: flex;
+    flex-direction: row;
 }
 
 
 .landing-page-group .left {
-    height: 100%;
     width: 30%;
     border-right: 2px solid black;
     display: flex;
     align-items: center;
-    justify-content: center;
     margin: 10px 10px;
     flex-direction: column;
     font-size: 10px;
@@ -21,6 +21,13 @@
     margin-top: 5px;
 }
 
+.landing-page-group .right {
+    width: 70%;
+    margin: 10px 10px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
 
 
 
