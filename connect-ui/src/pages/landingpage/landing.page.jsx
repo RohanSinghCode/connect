@@ -11,6 +11,7 @@ import ImageContainer from '../../components/image-container/image-container.com
 import CustomButton from '../../components/custom-button/CustomButton.components';
 import UpdateContainer from '../../components/update-container/update.componenet';
 import Posts from '../../components/posts/posts.component';
+import NewPost from '../../components/newpost/newpost.component';
 
 
 class LandingPage extends React.Component {
@@ -77,6 +78,7 @@ class LandingPage extends React.Component {
                         } 
                 </div>
                 <div className='right'>
+                        <NewPost />
                         <Posts />
                 </div>
               

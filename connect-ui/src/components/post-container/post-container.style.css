@@ -1,0 +1,20 @@
+.post-group {
+    border: 3px solid rgb(5, 80, 105);
+    margin-bottom: 5px;
+    width: 650px;
+    font-family: 'Nerko One', cursive;
+    font-size: 1.2vmin;
+    
+}
+
+.post-group .post-image {
+    width: 100%;
+}
+
+.post-group .group 
+{
+    display: flex;
+    justify-content: space-around;
+}
+
+ 

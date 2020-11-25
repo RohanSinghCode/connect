@@ -5,7 +5,7 @@ from rest_framework import serializers
 from accounts.serializer import UserSerializer
 
 class PostSerializer(ModelSerializer):
-    user = serializers.PrimaryKeyRelatedField(default=serializers.CurrentUserDefault(),read_only=True)
+    user = serializers.HiddenField(default=serializers.CurrentUserDefault())
     class Meta:
         model = Post
         fields = '__all__'

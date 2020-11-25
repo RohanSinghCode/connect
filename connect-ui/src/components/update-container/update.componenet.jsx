@@ -45,10 +45,10 @@ class UpdateContainer extends React.Component {
     }
     render(){
         return(
-            <div className='container'>
+            <div className='update-group'>
                 <form onSubmit={this.handleSubmit}>
                     <input type={this.props.type} onChange={this.handleChange} />
-                    <CustomButton type='submit' name='update' />
+                    <CustomButton type='submit' name='update' className='update' />
                 </form>
 
             </div>

@@ -1,0 +1,28 @@
+.new-post 
+{
+    width: 900px;
+    display: flex;
+    margin: auto;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    flex-direction: column;
+    align-items: center;
+    background-color: wheat;
+    border: 2px solid lightblue;
+    border-radius: 5px;
+}
+
+.new-post .post-submit 
+{
+    font-size: 20px;
+    position:relative;
+    margin:5px 5px ;
+}
+
+.new-post .post-input 
+{
+    resize: none;
+    background-color: lightblue;
+    margin-top: 5px;
+}
+
