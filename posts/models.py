@@ -7,8 +7,7 @@ class Post(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     post_image = models.ImageField(upload_to='post_image', null=False)
     post_caption = models.TextField(max_length=100,null=True)
-    votes = models.IntegerField(default=0)
-
+    votes = models.ManyToManyField(User,related_name='vote',blank=True)
     def __str__(self):
         return self.post_caption
 

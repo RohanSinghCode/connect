@@ -1,6 +1,6 @@
 import React from 'react';
 
-import * as actions from '../../store/actions/auth';
+import * as actions from '../../redux/auth/auth.action';
 import  {connect} from 'react-redux';
 
 import {Link} from 'react-router-dom';
@@ -9,17 +9,17 @@ import './navbar.style.css';
 
 
 
-const Navbar = (props) => {
+const Navbar = ({isAuthenticated,logout}) => {
     return(
         <div className='container'>
            <nav className='navbar'>
                 
                 <div className="options">
                     {
-                        props.isAuthenticated?(
+                        isAuthenticated?(
                             <div className="options">
                              <Link to='/' className='option'>HOME</Link>
-                             <Link onClick={props.logout} className='option'>LOGOUT</Link>
+                             <Link onClick={logout} className='option'>LOGOUT</Link>
                              </div>
                             ):
                         <div className="options"> 

@@ -1,7 +1,7 @@
 import React from "react";
 import {Switch, Route,Redirect } from 'react-router-dom';
 import {connect} from 'react-redux';
-import * as actions from './store/actions/auth';
+import * as actions from './redux/auth/auth.action';
 
 import "./App.css";
 
@@ -31,7 +31,8 @@ class App extends React.Component {
         <Route render={()=>
         this.props.isAuthenticated?(
         <Redirect to='/' />)
-        :(<LoginPage {...this.props} />)} path='/login'   />)
+        :(<LoginPage {...this.props} />)} path='/login'   />
+        
         <Route component={()=> <LandingPage {...this.props} />} path='/' />
         
       </Switch>

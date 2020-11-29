@@ -3,7 +3,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 
 import './signup.style.css'
-import * as actions from '../../store/actions/auth';
+import * as actions from '../../redux/auth/auth.action';
 
 import FormInput from '../../components/form-input/FormInput.component';
 import CustomButton from '../../components/custom-button/CustomButton.components';
