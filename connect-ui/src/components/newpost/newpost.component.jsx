@@ -51,7 +51,9 @@ class NewPost extends React.Component {
             Authorization:  `Token ${this.props.token}`
         }
 
-        axios.post("http://127.0.0.1:8000/posts/create-list",formData).catch(err=>console.log(err))
+        axios.post("http://127.0.0.1:8000/posts/create-list",formData)
+        .then(window.location.reload())
+        .catch(err=>console.log(err))
 
     }
 
@@ -72,7 +74,7 @@ class NewPost extends React.Component {
 
 const mapStateToProps = state => {
     return {
-        token:state.token,
+        token:state.auth.token,
     }
 }
 

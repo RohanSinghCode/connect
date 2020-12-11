@@ -99,7 +99,7 @@ export const authSignUp = (first_name,last_name,username,password) => {
 export const authCheckState = () => {
     return dispatch => {
         const token  = localStorage.getItem('token');
-        if (token === undefined){
+        if (token === null){
             dispatch(logout());
         } else {
             const expirationDate = new Date(localStorage.getItem('expirationDate'));

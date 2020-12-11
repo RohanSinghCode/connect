@@ -31,7 +31,7 @@ class Posts extends React.Component {
     
             axios.get("http://127.0.0.1:8000/posts/create-list").then(
                 resp => {
-                    console.log(resp.data)
+                    
                     this.setState({
                         data:resp.data
                     })
@@ -62,7 +62,7 @@ class Posts extends React.Component {
 
 const mapStateToProps = (state) => {
     return{
-        token:state.token
+        token:state.auth.token
     };
 }
 

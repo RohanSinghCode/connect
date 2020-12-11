@@ -1,2 +1,2 @@
-export const POST_DETAIL = 'POST_DETAIL';
-export const POST_FETCH = 'POST_FETCH';
+export const POST_LIKES = 'POST_LIKES';
+export const POST_FAIL = 'POST_FAIL';

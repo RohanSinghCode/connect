@@ -70,8 +70,8 @@ class SignUpPage extends React.Component {
 
 const mapStateToProps = (state) => {
     return {
-        loading: state.loading,
-        error: state.error
+        loading: state.auth.loading,
+        error: state.auth.error
     }
 }
 

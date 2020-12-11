@@ -3,6 +3,7 @@ import axios from 'axios';
 
 
 import {connect} from 'react-redux';
+import { Redirect } from 'react-router-dom';
 
 import './landing.style.css';
 
@@ -67,6 +68,14 @@ class LandingPage extends React.Component {
   
 
     render() {
+
+        if(this.props.token==null)
+        {
+            return(
+                <Redirect to='/login' />
+            )
+        }
+
         return(
             <div className='landing-page-group'>
                 <div className='left'>
@@ -90,7 +99,7 @@ class LandingPage extends React.Component {
 
 const mapStateToProps = state => {
     return{
-        token:state.token
+        token:state.auth.token
     };
 }
 

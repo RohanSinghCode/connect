@@ -7,6 +7,10 @@
     
 }
 
+.post-group:hover {
+    cursor: pointer;
+}
+
 .post-group .post-image {
     width: 100%;
 }
@@ -17,4 +21,16 @@
     justify-content: space-around;
 }
 
+.post-group .group .like-button {
+    border-radius: 10px;
+    border: 1px black solid;
+    height: 40px;
+    margin-top: 10px;
+    
+}
+
+.post-group .group .like-button:hover {
+    cursor: pointer;
+    background-color: lightseagreen;
+}
  
